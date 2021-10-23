@@ -1,9 +1,16 @@
 package pe.edu.upc.trabajo.controller;
 
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import pe.edu.upc.trabajo.business.crud.PostService;
+import pe.edu.upc.trabajo.models.entities.Post;
 
 
 @Controller
@@ -11,9 +18,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 de de escribe "/nombreDeLaCarpeta "*/
 public class FrontController {
 
+	@Autowired 
+	private PostService postService;
 	
-	@GetMapping("index")	// request
-	public String index() {
+	@GetMapping()	// request
+	public String index(Model model) {
+		
+		try {
+			List<Post> posts=postService.getAll();
+			model.addAttribute("posts",posts);	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "index";
 	}
 	
