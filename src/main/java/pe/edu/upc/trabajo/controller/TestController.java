@@ -36,7 +36,10 @@ public class TestController {
 	public String carousel() {
 		return "pages/carousel";
 	}
-	
+	@GetMapping("publication")	// request
+	public String publication() {
+		return "pages/publication";
+	}
 	
 	
 
