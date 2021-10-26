@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/pages")/*/ es la carpeta raiz, si se crea otra carpeta
 de de escribe "/nombreDeLaCarpeta "*/
-public class TestController {
+public class PagesController {
 
 	
 	@GetMapping("BasePost")	// request
@@ -36,10 +36,13 @@ public class TestController {
 	public String carousel() {
 		return "pages/carousel";
 	}
-	@GetMapping("publication")	// request
-	public String publication() {
-		return "pages/publication";
+	@GetMapping("scroll")	// request
+	public String scroll() {
+		return "pages/scroll";
 	}
+
+	
+	
 	
 	
 

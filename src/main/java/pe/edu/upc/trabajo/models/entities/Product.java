@@ -12,7 +12,6 @@ import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -45,8 +44,8 @@ public class Product {
 	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private List<OrderDetail> orderDetail;
 	
-	@OneToOne(mappedBy = "product",fetch = FetchType.LAZY)
-    private Post post;
+	@OneToMany(mappedBy = "product",fetch = FetchType.LAZY)
+    private List<Post> posts;
 
 	public Product() {
 		super();
@@ -109,13 +108,14 @@ public class Product {
 		this.orderDetail = orderDetail;
 	}
 
-	public Post getPost() {
-		return post;
+	public List<Post> getPosts() {
+		return posts;
 	}
 
-	public void setPost(Post post) {
-		this.post = post;
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
+
 
 	
 }

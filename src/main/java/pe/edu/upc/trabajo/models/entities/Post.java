@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,7 +38,7 @@ public class Post {
 	@JoinColumn(name = "user_id")
 	private User user ;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "product_id",nullable = false)
 	private Product product;
 	

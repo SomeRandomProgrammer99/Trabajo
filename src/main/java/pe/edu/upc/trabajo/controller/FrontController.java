@@ -35,6 +35,7 @@ public class FrontController {
 	}
 	
 	
+	
 	/*@GetMapping// request , es el nombre que se pone en el navegador
 	public String index(Model model) {
 		
