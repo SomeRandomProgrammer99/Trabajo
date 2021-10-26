@@ -36,6 +36,7 @@ public class PagesController {
 	public String carousel() {
 		return "pages/carousel";
 	}
+	
 	@GetMapping("scroll")	// request
 	public String scroll() {
 		return "pages/scroll";

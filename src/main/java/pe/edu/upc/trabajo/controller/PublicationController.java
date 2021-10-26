@@ -78,6 +78,21 @@ public class PublicationController {
 		
 		return "pages/postedit";
 	}
+	@GetMapping("{id}/del")
+	public String delete(Model model, @PathVariable("id") Integer id) {
+		try {
+			if(postService.existsById(id)) {
+				postService.deleteById(id);
+			} else {
+				return "redirect:/pages/publication";
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return "redirect:/pages/publication";
+	}
+	
 	
 	@PostMapping("save")
 	public String save(Model model, @ModelAttribute("post") Post post ) {
@@ -96,15 +111,30 @@ public class PublicationController {
 		}
 		return "redirect:/pages/publication";
 	}
-
+	
+	@GetMapping("newPost")	// request
+	public String newPost(Model model) {
+		try {
+		
+				List<Product> products = productService.getAll();
+				List<User> users= userService.getAll();
+				model.addAttribute("products", products);
+				model.addAttribute("users", users);
+				model.addAttribute("post",new Post());
+		
+		
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return "pages/newPost";
+	}
+	
 
 	@PostMapping("saveNew")
 	public String saveNew(Model model, @Valid @ModelAttribute("post") Post post, 
 			BindingResult result) {
-		if(result.hasErrors()) {
-			
-		}
-		//System.out.println(post.getId());
+		System.out.println(post.getId());
 		System.out.println(post.getName());
 		System.out.println(post.getDescription());
 		System.out.println(post.getDate());
@@ -118,7 +148,6 @@ public class PublicationController {
 		}
 		return "redirect:/pages/publication";
 	}
-	
-	
+
 	
 }
