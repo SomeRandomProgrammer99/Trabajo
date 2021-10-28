@@ -37,7 +37,7 @@
 <body>
 	<!-- navbar -->
 	<header>
-		<th:block th:include="/layout"></th:block>
+		<th:block th:include="layout"></th:block>
 	</header>
 
 	<!-- body  -->
@@ -193,7 +193,7 @@
 
 		<hr class="featurette-divider">
 
-		<div id="carouselExampleControls"
+		<!-- <div id="carouselExampleControls"
 			class="post-carousel carousel carousel-dark slide border border-dark"
 			data-bs-ride="carousel">
 			<div class="carousel-inner"></div>
@@ -208,7 +208,7 @@
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Next</span>
 			</button>
-		</div>
+		</div> -->
 		<!-- divisor del post -->
 		<div class="album py-5 ">
 			<div class="container">
@@ -221,7 +221,7 @@
 				<div>
 
 					<a class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"
-						th:href="${'/pages/dashboard'}"
+						th:href="${'/productor/publication'}"
 						style="text-decoration: none; color: black;">
 						<div class="col" th:each="post : ${posts}">
 							<div class="card shadow-sm row">

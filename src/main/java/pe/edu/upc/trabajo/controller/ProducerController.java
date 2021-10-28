@@ -1,7 +1,5 @@
 package pe.edu.upc.trabajo.controller;
 
-
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,18 +33,13 @@ public class ProducerController {
 
 	@Autowired 
 	private PostService postService;
-	
 	@Autowired 
 	private UserService userService;
 	@Autowired 
 	private ProductService productService;
 	
-	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-
-	
 	@GetMapping("publication")	// request
-	public String publication(Model model) {
-		
+	public String publication(Model model) {	
 		try {
 			List<Post> posts=postService.getAll();
 			model.addAttribute("posts",posts);	
@@ -55,6 +48,18 @@ public class ProducerController {
 			e.printStackTrace();
 		}
 		return "productor/publication";
+	}
+	
+	@GetMapping("product-list")	// request
+	public String productlist(Model model) {	
+		try {
+			List<Product> products=productService.getAll();
+			model.addAttribute("productos",products);	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "productor/product-list";
 	}
 	
 	@GetMapping("{id}/postedit")
@@ -69,13 +74,10 @@ public class ProducerController {
 				model.addAttribute("users", users);
 			} else {
 				return "redirect:/productor";
-			}
-		
-			
+			}		
 		} catch (Exception e) {
 			// TODO: handle exception
-		}
-		
+		}	
 		return "productor/postedit";
 	}
 	@GetMapping("{id}/del")
@@ -88,8 +90,7 @@ public class ProducerController {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-		}
-		
+		}	
 		return "redirect:/productor/publication";
 	}
 	
@@ -114,20 +115,30 @@ public class ProducerController {
 	
 	@GetMapping("newPost")	// request
 	public String newPost(Model model) {
-		try {
-		
+		try {	
 				List<Product> products = productService.getAll();
 				List<User> users= userService.getAll();
 				model.addAttribute("products", products);
 				model.addAttribute("users", users);
 				model.addAttribute("post",new Post());
-		
-		
 		} catch (Exception e) {
 			// TODO: handle exception
-		}
-		
+		}		
 		return "productor/newPost";
+	}
+	
+	@GetMapping("newProduct")	// request
+	public String newProduct(Model model) {
+		try {	
+				List<Product> products = productService.getAll();
+				List<User> users= userService.getAll();
+				model.addAttribute("products", products);
+				model.addAttribute("users", users);
+				model.addAttribute("post",new Post());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}		
+		return "productor/newProduct";
 	}
 	
 

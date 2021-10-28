@@ -1,5 +1,5 @@
 package pe.edu.upc.trabajo.controller;
-
+/*
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class SearchController {
 		model.addAttribute("productSearch", productSearch);
 		model.addAttribute("products", products);		
 		
-		return "searches/view-products";
+		return "searches/search-product";
 	}
 	
-}
+}*/
