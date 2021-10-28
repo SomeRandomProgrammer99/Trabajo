@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>Insert title here</title>
 
 <link th:href="@{css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{css/fontawesome.min.css}" rel="stylesheet">
+
 
 </head>
 <body>
@@ -16,11 +18,18 @@
   <path fill-rule="evenodd"
 			d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
 </symbol>
+
+<symbol id="search-icon" fill="currentColor" class="bi bi-search"
+			viewBox="0 0 16 16">
+  <path
+			d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+</symbol>
+
 </svg>
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top "
-		style="background-color: #66CC33" th:fragment="layout">
-		<div class="container-fluid">
-			<a class="navbar-brand" th:href="${'/'}"><h4>Virtual
+		style="background-color: #66CC33; color:white" th:fragment="layout">
+		<div class="container-fluid" >
+			<a class="navbar-brand" th:href="${'/'}" style="color:white"><h4>Virtual
 					Agronomist</h4></a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -31,33 +40,40 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" th:href="${'/'}">Home</a></li>
+						aria-current="page" th:href="${'/'}" style="color:white">Home</a></li>
 					<li class="nav-item"><a class="nav-link"
-						th:href="${'/profile'}">Post</a></li>
+						th:href="${'/productor/dashboard'}" style="color:white">Productor</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Dropdown </a>
+						role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white">
+							Categorias </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" th:href="${'/pages/dashboard'}">Action</a></li>
-							<li><a class="dropdown-item" href="#">Another action</a></li>
-							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="#">Something else
-									here</a></li>
+							<li th:each="categories : ${category}"
+								th:text="${categories.name}"></li>
+
+
 						</ul></li>
-					<li class="nav-item"><a class="nav-link disabled">Disabled</a>
-					</li>
+
+					<form >
+
+						<div class="input-group ">
+							<input type="search" class="form-control"
+								placeholder="¿Qué buscas?" aria-label="Search"
+								>
+							<button class="btn btn-light" type="submit">
+								<svg class="bi me-2" width="16" height="16">
+							<use xlink:href="#search-icon" /></svg>
+							</button>
+						</div>
+					</form>
+
 				</ul>
-				<form class="d-flex">
 
-					<input class="form-control me-2" type="search"
-						placeholder="Ingrese algo " aria-label="Search">
-
-					<button class="btn btn-outline-success" type="submit" style="color:white; font-weight:600">Search</button>
-				</form>
+					<a href="#" class="btn btn-warning mx-1">Sign In</a>
+					<a href="#" class="btn btn-warning mx-1">Sign Up</a>
+					<a href="#" class="btn btn-warning mx-1">Sign Out</a>
 			</div>
 		</div>
 	</nav>
-
 </body>
 </html>

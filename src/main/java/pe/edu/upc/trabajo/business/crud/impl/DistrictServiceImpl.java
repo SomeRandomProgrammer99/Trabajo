@@ -2,6 +2,8 @@ package pe.edu.upc.trabajo.business.crud.impl;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,12 @@ public class DistrictServiceImpl implements DistrictService {
 	public JpaRepository<District, Integer> getJpaRepository() {
 		// TODO Auto-generated method stub
 		return districtRepository;
+	}
+	
+	
+	@Override
+	public List<District> findByName(String name) throws Exception{
+		return districtRepository.findByName(name);
 	}
 
 }

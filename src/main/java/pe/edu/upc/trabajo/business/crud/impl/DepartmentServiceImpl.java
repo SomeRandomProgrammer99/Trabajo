@@ -2,6 +2,8 @@ package pe.edu.upc.trabajo.business.crud.impl;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -24,4 +26,9 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return departmentRepository;
 	}
 
+	@Override
+	public List<Department> findByName(String name) throws Exception {
+		// TODO Auto-generated method stub
+		return departmentRepository.findByName(name);
+	}
 }

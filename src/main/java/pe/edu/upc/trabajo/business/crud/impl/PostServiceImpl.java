@@ -1,6 +1,9 @@
 package pe.edu.upc.trabajo.business.crud.impl;
 
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -22,5 +25,10 @@ public class PostServiceImpl implements PostService {
 		// TODO Auto-generated method stub
 		return postRepository;
 	}
-
+	
+	@Override
+	public List<Post> findByDate(Date date) throws Exception{
+		return postRepository.findByDate(date);
+	}
+	
 }

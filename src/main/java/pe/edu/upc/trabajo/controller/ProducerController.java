@@ -29,9 +29,9 @@ import pe.edu.upc.trabajo.models.entities.User;
 
 @Controller
 @SessionAttributes("post")
-@RequestMapping("/pages")/*/ es la carpeta raiz, si se crea otra carpeta
+@RequestMapping("/productor")/*/ es la carpeta raiz, si se crea otra carpeta
 de de escribe "/nombreDeLaCarpeta "*/
-public class PublicationController {
+public class ProducerController {
 
 	@Autowired 
 	private PostService postService;
@@ -54,7 +54,7 @@ public class PublicationController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "pages/publication";
+		return "productor/publication";
 	}
 	
 	@GetMapping("{id}/postedit")
@@ -68,7 +68,7 @@ public class PublicationController {
 				model.addAttribute("products", products);
 				model.addAttribute("users", users);
 			} else {
-				return "redirect:/pages";
+				return "redirect:/productor";
 			}
 		
 			
@@ -76,7 +76,7 @@ public class PublicationController {
 			// TODO: handle exception
 		}
 		
-		return "pages/postedit";
+		return "productor/postedit";
 	}
 	@GetMapping("{id}/del")
 	public String delete(Model model, @PathVariable("id") Integer id) {
@@ -84,13 +84,13 @@ public class PublicationController {
 			if(postService.existsById(id)) {
 				postService.deleteById(id);
 			} else {
-				return "redirect:/pages/publication";
+				return "redirect:/productor/publication";
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		
-		return "redirect:/pages/publication";
+		return "redirect:/productor/publication";
 	}
 	
 	
@@ -109,7 +109,7 @@ public class PublicationController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return "redirect:/pages/publication";
+		return "redirect:/productor/publication";
 	}
 	
 	@GetMapping("newPost")	// request
@@ -127,7 +127,7 @@ public class PublicationController {
 			// TODO: handle exception
 		}
 		
-		return "pages/newPost";
+		return "productor/newPost";
 	}
 	
 
@@ -146,7 +146,7 @@ public class PublicationController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return "redirect:/pages/publication";
+		return "redirect:/productor/publication";
 	}
 
 	

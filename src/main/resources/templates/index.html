@@ -32,6 +32,7 @@
 <!-- Custom styles for this template -->
 <link href="/css/carousel.css" rel="stylesheet">
 
+
 </head>
 <body>
 	<!-- navbar -->
@@ -195,10 +196,7 @@
 		<div id="carouselExampleControls"
 			class="post-carousel carousel carousel-dark slide border border-dark"
 			data-bs-ride="carousel">
-			<div class="carousel-inner">
-			
-		
-			</div>
+			<div class="carousel-inner"></div>
 			<button class="carousel-control-prev" type="button"
 				data-bs-target="#carouselExampleControls" data-bs-slide="prev">
 
@@ -226,8 +224,9 @@
 						th:href="${'/pages/dashboard'}"
 						style="text-decoration: none; color: black;">
 						<div class="col" th:each="post : ${posts}">
-							<div class="card shadow-sm row" >
-								<img src="img/tienda1.png" class="card-img-top" alt="..." width="100%" height="225">
+							<div class="card shadow-sm row">
+								<img src="img/tienda1.png" class="card-img-top" alt="..."
+									width="100%" height="225">
 								<div class="card-body">
 
 									<h5 class="card-text" th:text="*{post.name}"></h5>

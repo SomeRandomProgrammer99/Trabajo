@@ -86,7 +86,7 @@
 			<hr>
 			<ul class="nav nav-pills flex-column mb-auto">
 			
-				<li><a  th:href="${'/pages/publication'}" class="nav-link link-dark"> <svg
+				<li><a  th:href="${'/productor/publication'}" class="nav-link link-dark"> <svg
 							class="bi me-2" width="16" height="16">
 							<use xlink:href="#publication" /></svg> Publications
 				</a></li>
@@ -114,7 +114,7 @@
 					<li><a class="dropdown-item" href="#">Settings</a></li>
 					<li><a class="dropdown-item" href="#">Profile</a></li>
 					<li><hr class="dropdown-divider"></li>
-					<li><a class="dropdown-item" href="#">Sign out</a></li>
+					<li><a class="dropdown-item" th:href="@{'/'}">Sign out</a></li>
 				</ul>
 			</div>
 		</div>

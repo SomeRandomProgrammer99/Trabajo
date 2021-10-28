@@ -8,31 +8,39 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.trabajo.business.crud.PostService;
 import pe.edu.upc.trabajo.models.entities.Post;
+import pe.edu.upc.trabajo.utils.ProductSearch;
 
 
 @Controller
+
 @RequestMapping("/")/*/ es la carpeta raiz, si se crea otra carpeta
 de de escribe "/nombreDeLaCarpeta "*/
+@SessionAttributes("{productSearch}")
+
 public class FrontController {
 
 	@Autowired 
 	private PostService postService;
 	
-	@GetMapping()	// request
-	public String index(Model model) {
-		
+	@GetMapping
+	public String home(Model model) {
+		ProductSearch productSearch = new ProductSearch();
 		try {
-			List<Post> posts=postService.getAll();
-			model.addAttribute("posts",posts);	
+			List<Post> posts = postService.getAll();
+			model.addAttribute("posts",posts);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		model.addAttribute("productSearch", productSearch);
 		return "index";
 	}
+	
 	
 	
 	

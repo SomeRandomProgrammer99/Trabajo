@@ -122,7 +122,7 @@
 			<div class="card" style="width: 25rem;">
 				<div class="card-body">
 
-					<form th:action="@{/pages/saveNew}" th:object="${post}" method="post">
+					<form th:action="@{/productor/saveNew}" th:object="${post}" method="post">
 						<div class="mb-3">
 							<label for="id" class="form-label">id</label> <input
 								type="text" class="form-control" th:field="*{id}">
@@ -155,7 +155,7 @@
 						</div>
 						<button  type="submit"
 							class="btn btn-success">Save</button> <a
-							th:href="@{/pages/publication}" class="btn btn-primary">Cancel</a>
+							th:href="@{/productor/publication}" class="btn btn-primary">Cancel</a>
 					</form>
 
 				</div>
