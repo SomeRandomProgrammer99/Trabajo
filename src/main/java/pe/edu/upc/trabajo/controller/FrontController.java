@@ -18,7 +18,7 @@ import pe.edu.upc.trabajo.utils.ProductSearch;
 @Controller
 @RequestMapping("/")/*/ es la carpeta raiz, si se crea otra carpeta
 de de escribe "/nombreDeLaCarpeta "*/
-//@SessionAttributes("{productSearch}")
+@SessionAttributes("{productSearch}")
 
 public class FrontController {
 
@@ -27,7 +27,7 @@ public class FrontController {
 	
 	@GetMapping
 	public String index(Model model) {
-		//ProductSearch productSearch = new ProductSearch();
+	ProductSearch productSearch = new ProductSearch();
 		try {
 			List<Post> posts = postService.getAll();
 			model.addAttribute("posts",posts);
@@ -36,7 +36,7 @@ public class FrontController {
 			e.printStackTrace();
 		}
 		
-		//model.addAttribute("productSearch", productSearch);
+		model.addAttribute("productSearch", productSearch);
 		return "index";
 	}
 	

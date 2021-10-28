@@ -1,5 +1,5 @@
 package pe.edu.upc.trabajo.controller;
-/*
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,4 +38,4 @@ public class SearchController {
 		return "searches/search-product";
 	}
 	
-}*/
+}
