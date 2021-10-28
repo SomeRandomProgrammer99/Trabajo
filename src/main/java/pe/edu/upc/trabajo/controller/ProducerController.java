@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-
 import pe.edu.upc.trabajo.business.crud.PostService;
 import pe.edu.upc.trabajo.business.crud.ProductService;
 import pe.edu.upc.trabajo.business.crud.UserService;
@@ -38,6 +37,7 @@ public class ProducerController {
 	@Autowired 
 	private ProductService productService;
 	
+	
 	@GetMapping("publication")	// request
 	public String publication(Model model) {	
 		try {
@@ -50,17 +50,7 @@ public class ProducerController {
 		return "productor/publication";
 	}
 	
-	@GetMapping("product-list")	// request
-	public String productlist(Model model) {	
-		try {
-			List<Product> products=productService.getAll();
-			model.addAttribute("productos",products);	
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "productor/product-list";
-	}
+
 	
 	@GetMapping("{id}/postedit")
 	public String edit(Model model, @PathVariable("id") Integer id) {
@@ -126,21 +116,6 @@ public class ProducerController {
 		}		
 		return "productor/newPost";
 	}
-	
-	@GetMapping("newProduct")	// request
-	public String newProduct(Model model) {
-		try {	
-				List<Product> products = productService.getAll();
-				List<User> users= userService.getAll();
-				model.addAttribute("products", products);
-				model.addAttribute("users", users);
-				model.addAttribute("post",new Post());
-		} catch (Exception e) {
-			// TODO: handle exception
-		}		
-		return "productor/newProduct";
-	}
-	
 
 	@PostMapping("saveNew")
 	public String saveNew(Model model, @Valid @ModelAttribute("post") Post post, 
@@ -152,7 +127,7 @@ public class ProducerController {
 		System.out.println(post.getProduct().getPrice());
 		System.out.println(post.getUser().getCompany());
 		try {
-			Post postSave = postService.create(post);		
+			Post postSave = postService.update(post);		
 			model.addAttribute("post", postSave);
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -122,28 +122,25 @@
 			<div class="card" style="width: 25rem;">
 				<div class="card-body">
 
-					<form th:action="@{/productor/saveNew}" th:object="${post}" method="post">
+					<form th:action="@{/productor/saveNewProduct}" th:object="${product}" method="post">
+						
 						<div class="mb-3">
-							<label for="id" class="form-label">id</label> <input
-								type="text" class="form-control" th:field="*{id}">
-						</div>
-						<div class="mb-3">
-							<label for="name" class="form-label">Name Post</label> <input
+							<label for="name" class="form-label">Name Product</label> <input
 								type="text" class="form-control" th:field="*{name}">
 						</div>
-						<div class="mb-3">
-							<label for="decription" class="form-label">Description</label> <input
-								type="text" class="form-control" th:field="*{description}">
+						<div class="input-group mb-3">
+							<span class="input-group-text">S/.</span> <input
+								type="text" class="form-control" th:field="*{price}">
 						</div>
 						<div class="mb-3">
-							<label for="date" class="form-label">Date</label> <input
-								type="date" class="form-control" th:value="*{date}">
+							<label for="stock" class="form-label">Stock</label> <input
+								type="text" class="form-control" th:field="*{stock}">
 						</div>
 						<div class="mb-3">
-							<label for="product" class="form-label">Product</label> <select
-								class="form-select" th:field="*{product}">
-								<option th:each="product : ${products}" th:value="${product.id}"
-									th:text="${product.name}">One</option>
+							<label for="product" class="form-label">Category</label> <select
+								class="form-select" th:field="*{category}">
+								<option th:each="category : ${category}" th:value="${category.id}"
+									th:text="${category.name}">One</option>
 							</select>
 						</div>
 						<div class="mb-3">
@@ -155,7 +152,7 @@
 						</div>
 						<button  type="submit"
 							class="btn btn-success">Save</button> <a
-							th:href="@{/productor/publication}" class="btn btn-primary">Cancel</a>
+							th:href="@{/productor/product-list}" class="btn btn-primary">Cancel</a>
 					</form>
 				</div>
 			</div>
