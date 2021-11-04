@@ -1,7 +1,5 @@
 package pe.edu.upc.trabajo.business.crud.impl;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Service;
 import pe.edu.upc.trabajo.business.crud.DistrictService;
 import pe.edu.upc.trabajo.models.entities.District;
 import pe.edu.upc.trabajo.models.repository.DistrictRepository;
-
 
 @Service
 public class DistrictServiceImpl implements DistrictService {
@@ -24,10 +21,10 @@ public class DistrictServiceImpl implements DistrictService {
 		// TODO Auto-generated method stub
 		return districtRepository;
 	}
-	
-	
+
 	@Override
-	public List<District> findByName(String name) throws Exception{
+	public List<District> findByName(String name) throws Exception {
+		// TODO Auto-generated method stub
 		return districtRepository.findByName(name);
 	}
 

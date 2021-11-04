@@ -5,9 +5,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import pe.edu.upc.trabajo.models.entities.Category;
-
+import pe.edu.upc.trabajo.models.entities.TypePayment;
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Integer> {
-	List<Category> findByName(String name);
+public interface TypePaymentRepository extends JpaRepository<TypePayment, Integer> {
+	List<TypePayment> findByName(String name);
 }

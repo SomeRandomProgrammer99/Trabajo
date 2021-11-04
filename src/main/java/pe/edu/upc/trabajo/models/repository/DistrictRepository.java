@@ -9,5 +9,5 @@ import pe.edu.upc.trabajo.models.entities.District;
 
 @Repository
 public interface DistrictRepository extends JpaRepository<District, Integer> {
-	List<District> findByName(String name) throws Exception;
+	List<District> findByName(String name);
 }

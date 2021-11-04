@@ -1,6 +1,6 @@
 package pe.edu.upc.trabajo.controller;
 
-
+/*
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +16,14 @@ import pe.edu.upc.trabajo.utils.ProductSearch;
 
 
 @Controller
-@RequestMapping("/")/*/ es la carpeta raiz, si se crea otra carpeta
-de de escribe "/nombreDeLaCarpeta "*/
+@RequestMapping("/")// es la carpeta raiz, si se crea otra carpeta
+de de escribe "/nombreDeLaCarpeta "/
 @SessionAttributes("{productSearch}")
 
 public class FrontController {
 
 	@Autowired 
-	private PostService postService;
+	private PostService //postService;
 	
 	@GetMapping
 	public String index(Model model) {
@@ -43,7 +43,7 @@ public class FrontController {
 	
 	
 	
-	/*@GetMapping// request , es el nombre que se pone en el navegador
+	@GetMapping// request , es el nombre que se pone en el navegador
 	public String index(Model model) {
 		
 		try {
@@ -56,6 +56,6 @@ public class FrontController {
 		
 		return "index";//es el nombre del html
 	}
-	*/
 	
-}
+	
+}*/

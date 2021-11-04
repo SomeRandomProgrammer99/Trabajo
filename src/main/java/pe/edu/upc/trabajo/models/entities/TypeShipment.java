@@ -1,6 +1,5 @@
 package pe.edu.upc.trabajo.models.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,23 +13,25 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Form_payments",
-	indexes= {@Index(columnList="payment_name",name="form_payment_index_payment_name")})
-public class FormPayment {
+@Table(name = "Type_shipments",
+	indexes= {@Index(columnList="typeShipment_name",name="type_shipments_index_typeShipment_name")})
+
+public class TypeShipment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "payment_id", columnDefinition = "NUMERIC(4)")
+	@Column(name = "typeShipment_id", columnDefinition = "NUMERIC(4)")
 	private Integer id;
 	
-	@Column(name = "payment_name", length = 20)
+	@Column(name = "typeShipment_name", length = 20)
 	private String name;
 	
-	@OneToMany(mappedBy = "payment", fetch = FetchType.LAZY)
-	private List<Order> orders;
+	@OneToMany(mappedBy = "typeShipment", fetch = FetchType.LAZY)
+	private List<Shipment> shipments;
+
 	
-	public FormPayment() {
+	public TypeShipment() {
 		super();
-		orders = new ArrayList<Order>();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getId() {
@@ -49,11 +50,12 @@ public class FormPayment {
 		this.name = name;
 	}
 
-	public List<Order> getOrders() {
-		return orders;
+	public List<Shipment> getShipments() {
+		return shipments;
 	}
 
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
+	public void setShipments(List<Shipment> shipments) {
+		this.shipments = shipments;
 	}
+	
 }

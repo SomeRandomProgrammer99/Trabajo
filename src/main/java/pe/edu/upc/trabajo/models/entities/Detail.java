@@ -5,16 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+//import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "Order_details")
-@IdClass(OrderDetailId.class)
-public class OrderDetail {
-	
+@Table(name = "Details")
+@IdClass(DetailId.class)
+public class Detail {
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="order_id")
@@ -25,13 +25,18 @@ public class OrderDetail {
 	@JoinColumn(name="product_id")
 	private Product product;
 	
+	/*
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="producer_id")
+	private Producer producer;*/
+	
 	@Column(name = "quantity")
 	private Integer quantity;
 	
 	@Column(name = "unit_price", columnDefinition = "DECIMAL(8,2)")
 	private Float price;
 
-	public OrderDetail() {
+	public Detail() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -67,7 +72,4 @@ public class OrderDetail {
 	public void setPrice(Float price) {
 		this.price = price;
 	}
-
-	
-
 }

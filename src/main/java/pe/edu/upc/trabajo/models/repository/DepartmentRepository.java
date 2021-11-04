@@ -9,5 +9,5 @@ import pe.edu.upc.trabajo.models.entities.Department;
 
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department, Integer> {
-	List<Department> findByName(String name) throws Exception;
+	List<Department> findByName(String name);
 }

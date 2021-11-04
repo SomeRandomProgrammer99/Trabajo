@@ -1,6 +1,5 @@
 package pe.edu.upc.trabajo.models.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,28 +8,27 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Categories",
-	indexes= {@Index(columnList="category_name",name="categories_index_category_name")})
-public class Category {
+@Table(name = "Statuses")
+
+public class Status {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "category_id", columnDefinition = "NUMERIC(4)")
+	@Column(name = "status_id", columnDefinition = "NUMERIC(4)")
 	private Integer id;
 	
-	@Column(name = "category_name", length = 20)
+	@Column(name = "status_name", length = 20)
 	private String name;
 	
-	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-	private List<Product> products;
+	@OneToMany(mappedBy = "status", fetch = FetchType.LAZY)
+	private List<ShipmentStatus> shipmentStatus;
 
-	public Category() {
+	public Status() {
 		super();
-		products=new ArrayList<Product>();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getId() {
@@ -49,11 +47,11 @@ public class Category {
 		this.name = name;
 	}
 
-	public List<Product> getProducts() {
-		return products;
+	public List<ShipmentStatus> getShipmentStatus() {
+		return shipmentStatus;
 	}
 
-	public void setProducts(List<Product> products) {
-		this.products = products;
+	public void setShipmentStatus(List<ShipmentStatus> shipmentStatus) {
+		this.shipmentStatus = shipmentStatus;
 	}
 }

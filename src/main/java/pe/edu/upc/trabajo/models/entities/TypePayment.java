@@ -14,23 +14,23 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Categories",
-	indexes= {@Index(columnList="category_name",name="categories_index_category_name")})
-public class Category {
+@Table(name = "Type_payments",
+	indexes= {@Index(columnList="payment_name",name="type_payments_index_payment_name")})
+public class TypePayment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "category_id", columnDefinition = "NUMERIC(4)")
+	@Column(name = "payment_id", columnDefinition = "NUMERIC(4)")
 	private Integer id;
 	
-	@Column(name = "category_name", length = 20)
+	@Column(name = "payment_name", length = 20)
 	private String name;
 	
-	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-	private List<Product> products;
+	@OneToMany(mappedBy = "typePayment", fetch = FetchType.LAZY)
+	private List<Order> orders;
 
-	public Category() {
+	public TypePayment() {
 		super();
-		products=new ArrayList<Product>();
+		orders = new ArrayList<Order>();
 	}
 
 	public Integer getId() {
@@ -49,11 +49,11 @@ public class Category {
 		this.name = name;
 	}
 
-	public List<Product> getProducts() {
-		return products;
+	public List<Order> getOrders() {
+		return orders;
 	}
 
-	public void setProducts(List<Product> products) {
-		this.products = products;
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 }

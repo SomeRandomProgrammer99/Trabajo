@@ -1,6 +1,6 @@
 package pe.edu.upc.trabajo.models.entities;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,7 +20,6 @@ import javax.persistence.Table;
 @Table(name = "Districts",
 	indexes= {@Index(columnList="district_name",name="district_index_district_name")})
 public class District {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "district_id", columnDefinition = "NUMERIC(4)")
@@ -34,13 +33,16 @@ public class District {
 	private Department department ;
 	
 	@OneToMany(mappedBy = "district", fetch = FetchType.LAZY)
-	private List<User> users;
+	private List<Producer> producers;
 	
+	@OneToMany(mappedBy = "district", fetch = FetchType.LAZY)
+	private List<Wholesaler> wholesalers;
+
 	public District() {
 		super();
-		users= new ArrayList<User>();
+		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -65,12 +67,22 @@ public class District {
 		this.department = department;
 	}
 
-	public List<User> getUsers() {
-		return users;
+	public List<Producer> getProducers() {
+		return producers;
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setProducers(List<Producer> producers) {
+		this.producers = producers;
 	}
+
+	public List<Wholesaler> getWholesalers() {
+		return wholesalers;
+	}
+
+	public void setWholesalers(List<Wholesaler> wholesalers) {
+		this.wholesalers = wholesalers;
+	}
+	
+	
 
 }

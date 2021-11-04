@@ -13,38 +13,46 @@ import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Orders",
-	indexes= {@Index(columnList="date_order",name="orders_index_date_order")})
+	indexes= {@Index(columnList="date",name="orders_index_date_order")})
 public class Order {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_id", columnDefinition = "NUMERIC(4)")
 	private Integer id;
 	
-	@Column(name = "date_order")
-	@Temporal(TemporalType.DATE)
-	private Date dateOrder;
-	
 	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User userId;
+	@JoinColumn(name = "wholesaler_id")
+	private Wholesaler wholesaler;
 	
-	@Column(name = "selling_company", length = 20)//company seller
-	private String sellingCompany;//string 
+	@Column(name = "amount", columnDefinition = "DECIMAL(8,2)")
+	private Float amount;
+	
+	@Column(name = "date")
+	@Temporal(TemporalType.DATE)
+	private Date date;
 	
 	@ManyToOne
 	@JoinColumn(name = "payment_id")
-	private FormPayment payment; 
+	private TypePayment typePayment; 
 	
 	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-	private List<OrderDetail> orderDetails;
+	private List<Detail> cards;
 	
+	@OneToOne(mappedBy = "order", fetch = FetchType.LAZY)
+	private Shipment shipment;
+
+	public Order() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -53,36 +61,51 @@ public class Order {
 		this.id = id;
 	}
 
-	public Date getDateOrder() {
-		return dateOrder;
+	public Wholesaler getWholesaler() {
+		return wholesaler;
 	}
 
-	public void setDateOrder(Date dateOrder) {
-		this.dateOrder = dateOrder;
+	public void setWholesaler(Wholesaler wholesaler) {
+		this.wholesaler = wholesaler;
 	}
 
-	public FormPayment getPayment() {
-		return payment;
+	public Float getAmount() {
+		return amount;
 	}
 
-	public void setPayment(FormPayment payment) {
-		this.payment = payment;
+	public void setAmount(Float amount) {
+		this.amount = amount;
 	}
 
-	public List<OrderDetail> getOrderDetails() {
-		return orderDetails;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setOrderDetails(List<OrderDetail> orderDetails) {
-		this.orderDetails = orderDetails;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
-	public User getUserId() {
-		return userId;
+	public TypePayment getTypePayment() {
+		return typePayment;
 	}
 
-	public void setUserId(User userId) {
-		this.userId = userId;
+	public void setTypePayment(TypePayment typePayment) {
+		this.typePayment = typePayment;
 	}
 
+	public List<Detail> getCards() {
+		return cards;
+	}
+
+	public void setCards(List<Detail> cards) {
+		this.cards = cards;
+	}
+
+	public Shipment getShipment() {
+		return shipment;
+	}
+
+	public void setShipment(Shipment shipment) {
+		this.shipment = shipment;
+	}
 }

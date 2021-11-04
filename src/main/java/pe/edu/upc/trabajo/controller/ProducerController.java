@@ -1,5 +1,5 @@
 package pe.edu.upc.trabajo.controller;
-
+/*
 import java.util.List;
 import java.util.Optional;
 
@@ -26,8 +26,8 @@ import pe.edu.upc.trabajo.models.entities.User;
 
 @Controller
 @SessionAttributes("post")
-@RequestMapping("/productor")/*/ es la carpeta raiz, si se crea otra carpeta
-de de escribe "/nombreDeLaCarpeta "*/
+@RequestMapping("/productor")// es la carpeta raiz, si se crea otra carpeta
+//de de escribe "/nombreDeLaCarpeta "/
 public class ProducerController {
 
 	@Autowired 
@@ -136,4 +136,4 @@ public class ProducerController {
 	}
 
 	
-}
+}*/
