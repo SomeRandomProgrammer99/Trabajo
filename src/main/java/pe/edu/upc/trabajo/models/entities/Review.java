@@ -29,7 +29,7 @@ public class Review {
 	@JoinColumn(name = "wholesaler_id", nullable = false)
 	private Wholesaler wholesaler;
 	
-	@Column(name = "review_description", length = 20)
+	@Column(name = "review_description", length = 50)
 	private String description;
 	
 	@Column(name = "qualification", columnDefinition = "NUMERIC(1)")

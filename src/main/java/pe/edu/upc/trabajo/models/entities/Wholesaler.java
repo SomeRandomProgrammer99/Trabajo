@@ -25,17 +25,17 @@ public class Wholesaler {
 
 	//@transiet sirve para especificar que el atributo no se guarda en la base de datos, no se hace persistente
 	
-	@Column(name = "wholesaler_name", length = 20)
+	@Column(name = "wholesaler_name", length = 30)
 	private String name;
 
 	@Column(name = "phone", columnDefinition = "NUMERIC(9)")
 	private Integer phone;
 
-	@Column(name = "email", length = 20)
+	@Column(name = "email", length = 30)
 	private String email;
 	
 	@Column(name = "ruc", columnDefinition = "NUMERIC(11)")
-	private Integer ruc;
+	private Double ruc;
 	
 	@ManyToOne
 	@JoinColumn(name = "district_id", nullable = false)
@@ -84,11 +84,11 @@ public class Wholesaler {
 		this.email = email;
 	}
 
-	public Integer getRuc() {
+	public Double getRuc() {
 		return ruc;
 	}
 
-	public void setRuc(Integer ruc) {
+	public void setRuc(Double ruc) {
 		this.ruc = ruc;
 	}
 

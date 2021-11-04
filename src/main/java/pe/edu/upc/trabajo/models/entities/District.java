@@ -25,7 +25,7 @@ public class District {
 	@Column(name = "district_id", columnDefinition = "NUMERIC(4)")
 	private Integer id;
 	
-	@Column(name = "district_name", length = 20)
+	@Column(name = "district_name", length = 30)
 	private String name;
 	
 	@ManyToOne

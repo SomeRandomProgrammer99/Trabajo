@@ -33,7 +33,7 @@ public class Shipment {
 	@Temporal(TemporalType.DATE)
 	private Date date;
 	
-	@Column(name = "address", length = 20)
+	@Column(name = "address", length = 30)
 	private String address;
 	
 	@ManyToOne

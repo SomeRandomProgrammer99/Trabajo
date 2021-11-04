@@ -20,7 +20,7 @@ public class Status {
 	@Column(name = "status_id", columnDefinition = "NUMERIC(4)")
 	private Integer id;
 	
-	@Column(name = "status_name", length = 20)
+	@Column(name = "status_name", length = 30)
 	private String name;
 	
 	@OneToMany(mappedBy = "status", fetch = FetchType.LAZY)

@@ -22,7 +22,7 @@ public class TypePayment {
 	@Column(name = "payment_id", columnDefinition = "NUMERIC(4)")
 	private Integer id;
 	
-	@Column(name = "payment_name", length = 20)
+	@Column(name = "payment_name", length = 30)
 	private String name;
 	
 	@OneToMany(mappedBy = "typePayment", fetch = FetchType.LAZY)

@@ -30,10 +30,10 @@ public class Product {
 	@JoinColumn(name = "producer_id")
 	private Producer producer;
 	
-	@Column(name = "product_name", length = 20)
+	@Column(name = "product_name", length = 30)
 	private String name;
 	
-	@Column(name = "product_description", length = 20)
+	@Column(name = "product_description", length = 50)
 	private String description;
 	
 	@Column(name = "price", columnDefinition = "DECIMAL(8,2)")

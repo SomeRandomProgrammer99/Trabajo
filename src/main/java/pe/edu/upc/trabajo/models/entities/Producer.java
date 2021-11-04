@@ -24,16 +24,16 @@ public class Producer {
 	@Column(name = "producer_id", columnDefinition = "NUMERIC(4)")
 	private Integer id;
 
-	@Column(name = "producer_first_name", length = 20)
+	@Column(name = "producer_first_name", length = 30)
 	private String name;
 	
-	@Column(name = "producer_last_name", length = 20)
+	@Column(name = "producer_last_name", length = 30)
 	private String lastName;
 
 	@Column(name = "phone", columnDefinition = "NUMERIC(9)")
 	private Integer phone;
 
-	@Column(name = "email", length = 20)
+	@Column(name = "email", length = 30)
 	private String email;
 
 	@ManyToOne
