@@ -216,17 +216,17 @@
 					<a class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"
 						th:href="${'/productor/publication'}"
 						style="text-decoration: none; color: black;">
-						<div class="col" th:each="post : ${posts}">
+						<div class="col" th:each="product : ${product}">
 							<div class="card shadow-sm row" style="width: 22rem">
 								<img src="img/tienda1.png" class="card-img-top" alt="..."
 									width="100%" height="225">
 								<div class="card-body">
 
-									<h5 class="card-text" th:text="*{post.name}"></h5>
-									<h6 class="card-text" th:text="*{post.description}"></h6>
+									<h5 class="card-text" th:text="*{product.name}"></h5>
+									<h6 class="card-text" th:text="*{product.description}"></h6>
 									<p class="card-text">
 										S/.
-										<spam th:text="*{post.product.price}"></spam>
+										<spam th:text="*{product.price}"></spam>
 										Kg
 									</p>
 									<p class="card-text" th:text="*{post.user.company}"></p>
@@ -243,8 +243,8 @@
 									</p>
 
 
-									<div class="d-flex justify-content-end">
-										<small class="text-muted" th:text="*{post.date}"></small>
+									<!--  <div class="d-flex justify-content-end">
+										<small class="text-muted" th:text="*{post.date}"></small>-->
 									</div>
 								</div>
 							</div>
