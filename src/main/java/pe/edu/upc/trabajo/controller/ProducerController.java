@@ -1,5 +1,5 @@
 package pe.edu.upc.trabajo.controller;
-/*
+
 import java.util.List;
 import java.util.Optional;
 
@@ -16,28 +16,45 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import pe.edu.upc.trabajo.business.crud.PostService;
+import pe.edu.upc.trabajo.business.crud.ProducerService;
 import pe.edu.upc.trabajo.business.crud.ProductService;
-import pe.edu.upc.trabajo.business.crud.UserService;
-import pe.edu.upc.trabajo.models.entities.Post;
+import pe.edu.upc.trabajo.models.entities.Producer;
 import pe.edu.upc.trabajo.models.entities.Product;
-import pe.edu.upc.trabajo.models.entities.User;
+import pe.edu.upc.trabajo.utils.ProductSearch;
 
 
 @Controller
 @SessionAttributes("post")
-@RequestMapping("/productor")// es la carpeta raiz, si se crea otra carpeta
+@RequestMapping("/productores")// es la carpeta raiz, si se crea otra carpeta
 //de de escribe "/nombreDeLaCarpeta "/
 public class ProducerController {
 
-	@Autowired 
-	private PostService postService;
-	@Autowired 
-	private UserService userService;
+	
+
 	@Autowired 
 	private ProductService productService;
 	
+	@Autowired 
+	private ProducerService producerService; //postService;
 	
+	
+	@GetMapping("producerView")	// request
+	public String ProducerView(Model model) {
+		ProductSearch productSearch = new ProductSearch();
+		
+		try {
+			List<Producer> producers = producerService.getAll();
+			model.addAttribute("producers",producers);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("productSearch", productSearch);
+		return "productores/producerView";
+	}
+	
+/*	
 	@GetMapping("publication")	// request
 	public String publication(Model model) {	
 		try {
@@ -134,6 +151,6 @@ public class ProducerController {
 		}
 		return "redirect:/productor/publication";
 	}
-
+*/
 	
-}*/
+}

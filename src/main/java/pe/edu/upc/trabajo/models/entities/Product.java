@@ -61,6 +61,14 @@ public class Product {
 
 
 
+	public Integer getProduct() {
+		return product;
+	}
+
+	public void setProduct(Integer product) {
+		this.product = product;
+	}
+
 	public String getName() {
 		return name;
 	}
