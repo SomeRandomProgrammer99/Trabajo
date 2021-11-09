@@ -13,7 +13,6 @@ import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -42,12 +41,16 @@ public class Order {
 	@JoinColumn(name = "payment_id")
 	private TypePayment typePayment; 
 	
+	@ManyToOne
+	@JoinColumn(name = "shipment_id")
+	private Shipment shipment; 
+	
+	@OneToMany(mappedBy = "producers", fetch = FetchType.LAZY)
+	private List<Review> reviews;
+	
 	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
 	private List<Detail> cards;
 	
-	@OneToOne(mappedBy = "order", fetch = FetchType.LAZY)
-	private Shipment shipment;
-
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import pe.edu.upc.trabajo.business.crud.ReviewService;
 import pe.edu.upc.trabajo.models.entities.Review;
-import pe.edu.upc.trabajo.models.entities.ReviewId;
 import pe.edu.upc.trabajo.models.repository.ReviewRepository;
 
 @Service
@@ -19,7 +18,7 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewRepository reviewRepository;
 	
 	@Override
-	public JpaRepository<Review, ReviewId> getJpaRepository() {
+	public JpaRepository<Review, Integer> getJpaRepository() {
 		// TODO Auto-generated method stub
 		return reviewRepository;
 	}

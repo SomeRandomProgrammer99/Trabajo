@@ -44,7 +44,7 @@ public class Wholesaler {
 	@OneToMany(mappedBy = "wholesaler", fetch = FetchType.LAZY)
 	private List<Order> orders;
 	
-	@OneToMany(mappedBy = "wholesaler", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "wholesalers", fetch = FetchType.LAZY)
 	private List<Review> reviews;
 	
 	public Wholesaler() {

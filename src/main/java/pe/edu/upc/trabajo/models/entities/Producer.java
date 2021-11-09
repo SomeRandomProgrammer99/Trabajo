@@ -12,7 +12,6 @@ import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -43,12 +42,21 @@ public class Producer {
 	@OneToMany(mappedBy = "producer", fetch = FetchType.LAZY)
 	private List<Product> products;
 	
-	@OneToOne(mappedBy = "producers", fetch = FetchType.LAZY)
-	private Comment  comment;
+	@OneToMany(mappedBy = "producers", fetch = FetchType.LAZY)
+	private List<Review> reviews;
+	
 
 	public Producer() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 
 	public Integer getId() {
