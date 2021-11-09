@@ -24,7 +24,7 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id", columnDefinition = "NUMERIC(4)")
-	private Integer product;
+	private Integer id;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "producer_id")
@@ -62,11 +62,11 @@ public class Product {
 
 
 	public Integer getProduct() {
-		return product;
+		return id;
 	}
 
 	public void setProduct(Integer product) {
-		this.product = product;
+		this.id = product;
 	}
 
 	public String getName() {
