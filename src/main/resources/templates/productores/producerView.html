@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es"  xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,6 @@
 
 <!-- Bootstrap core CSS -->
 <link href="/css/bootstrap.min.css" rel="stylesheet">
-<link href="/css/interface-style.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 
@@ -19,8 +18,6 @@
 body {
 	padding-top: 4rem;
 }
-
-
 </style>
 
 
@@ -34,36 +31,35 @@ body {
 
 	<!-- body  -->
 
-	<main class="main-contenedor">
 
-		<div class="container mt-2">
+	<main class="container mt-2">
+
+		<h2>Conoce a nuestros productores</h2>
+
+		<div class="container mt-3">
 			<div class="row">
-				<div class="col">
+				<div class="col g-3" th:each="producer : ${producers}">
+					<div class="card" style="width: 22rem">
+						<img th:src="${'/img/productores/agro' + producer.id + '.png'}"
+							class="card-img-top" alt="..." width="100%" height="225">
+						<div class="card-body">
+							<h5 class="card-text"
+								th:text="*{producer.name+' '+producer.lastName}"></h5>
+							<p class="card-text" th:text="*{producer.phone}"></p>
+							<p class="card-text" th:text="*{producer.email}"></p>
 
-					<h2>Conoce a nuestros productores</h2>
-
-					<div class="container mt-3">
-						<a class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" href="#"
-							style="text-decoration: none; color: black;">
-							<div class="col" th:each="producer : ${producers}">
-								<div class="card shadow-sm row" style="width: 22rem">
-									<img th:src="${'/img/productores/agro' + producer.id + '.png'}" class="card-img-top" alt="..."
-										width="100%" height="225">
-									<div class="card-body">
-										<h5 class="card-text" th:text="*{producer.name+' '+producer.lastName}"></h5>
-										<p class="card-text" th:text="*{producer.phone}"></p>
-										<p class="card-text" th:text="*{producer.email}"></p>
-									
-										<p class="text-muted text-end" th:text="*{producer.district.name}"/>
-									</div>
-								</div>
-							</div>
-						</a>
+							<p class="text-muted text-end"
+								th:text="*{producer.district.name}"></p>
+							<a type="button" class="btn btn-primary"
+								th:href="@{/productores/{id}/viewReview(id=${producer.id})}">Reseñas</a>
+						</div>
 					</div>
-
-
 				</div>
 			</div>
+		</div>
+
+
+
 	</main>
 
 	<script src="/js/bootstrap.bundle.min.js"></script>

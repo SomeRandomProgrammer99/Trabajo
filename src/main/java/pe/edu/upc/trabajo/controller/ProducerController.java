@@ -59,39 +59,24 @@ public class ProducerController {
 		return "productores/producerView";
 	}
 	
-	@GetMapping("comentario")	// request
-	public String Comentario(Model model) {
-		//ProductSearch productSearch = new ProductSearch();
+	@GetMapping("{id}/viewReview")	// request
+	public String Comentario(Model model, @PathVariable("id") Integer id) {
+		ProductSearch productSearch = new ProductSearch();
 		
 		try {
-			List<Review> reviews = reviewService.getAll();
-			model.addAttribute("reviews",reviews);
+			Optional<Review> reviews = reviewService.findById(id);
+			//List<Review> reviews = reviewService.getAll();
+			model.addAttribute("review",reviews.get());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		//model.addAttribute("productSearch", productSearch);
-		return "productores/view-review";
-	}
-	
-	
+		model.addAttribute("productSearch", productSearch);
+		return "productores/viewReview";
+	}	
 /*	
-	@GetMapping("publication")	// request
-	public String publication(Model model) {	
-		try {
-			List<Post> posts=postService.getAll();
-			model.addAttribute("posts",posts);	
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "productor/publication";
-	}
-	
-
-	
-	@GetMapping("{id}/postedit")
+ * @GetMapping("{id}/postedit")
 	public String edit(Model model, @PathVariable("id") Integer id) {
 		try {
 			if(postService.existsById(id)) {
@@ -109,6 +94,21 @@ public class ProducerController {
 		}	
 		return "productor/postedit";
 	}
+	@GetMapping("publication")	// request
+	public String publication(Model model) {	
+		try {
+			List<Post> posts=postService.getAll();
+			model.addAttribute("posts",posts);	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "productor/publication";
+	}
+	
+
+	
+	
 	@GetMapping("{id}/del")
 	public String delete(Model model, @PathVariable("id") Integer id) {
 		try {
