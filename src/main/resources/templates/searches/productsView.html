@@ -135,7 +135,8 @@
 													<p>
 														Añadir <input type="checkbox">
 													</p>-->
-													<a class="btn btn-danger"  type="button">Comprar </a>
+													<a class="btn btn-danger"  type="button"
+													th:href="@{/mayorista/{id}/compra(id=${product.product})}">Comprar </a>
 													<!-- th:href=@{/mayorista/{id}(id=${product.id})} /mayorista/order?(id=product.id)-->
 												</div>
 

@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import pe.edu.upc.trabajo.business.crud.OrderService;
 import pe.edu.upc.trabajo.business.crud.ProducerService;
 import pe.edu.upc.trabajo.business.crud.ProductService;
 import pe.edu.upc.trabajo.models.entities.Producer;
 import pe.edu.upc.trabajo.models.entities.Product;
+import pe.edu.upc.trabajo.models.entities.Review;
+import pe.edu.upc.trabajo.models.entities.Order;
 import pe.edu.upc.trabajo.utils.Carrito;
 import pe.edu.upc.trabajo.utils.ProductSearch;
 
@@ -26,9 +29,13 @@ import pe.edu.upc.trabajo.utils.ProductSearch;
  */
 public class MayoristaController {
 
-	
-	  @Autowired private ProductService productService; //postService;
-	 /* 
+	@Autowired
+	private ProductService productService; // postService;
+
+	@Autowired
+	private OrderService orderService;
+
+	/*
 	 * 
 	 * @GetMapping("producerView") // request public String dashboard(Model model) {
 	 * ProductSearch productSearch = new ProductSearch();
@@ -40,48 +47,38 @@ public class MayoristaController {
 	 * model.addAttribute("productSearch", productSearch); return
 	 * "productores/producerView"; }
 	 */
-	
-	
-	List<Carrito> listarCarrito=new ArrayList<>(); 
+
+	List<Carrito> listarCarrito = new ArrayList<>();
 	Carrito car;
-	
+
 	int item;
-	double totalPagar=0;
-	int cantidad=1;
+	double totalPagar = 0;
+	int cantidad = 1;
 
 	@GetMapping("order") // request
-	public String order(Model model/*, @PathVariable("id")Integer id*/) {
-		//id=Integer.parseInt(id);
+	public String order(Model model/* , @PathVariable("id")Integer id */) {
+		// id=Integer.parseInt(id);
 		ProductSearch productSearch = new ProductSearch();
-		/*try {
-			totalPagar=0;
-			Optional<Product> productOptional = productService.findById(id);
-			Product product=productOptional.get();
-			item=item+1;
-			car=new Carrito(); 
-			car.setItem(item);
-			car.setIdProducto(product.getProduct());
-			car.setNombre(product.getName());
-			car.setDescription(product.getDescription());
-			car.setPrecio(product.getPrice());
-			car.setCantidad(cantidad);
-			car.setMonto(cantidad*product.getPrice());
-			listarCarrito.add(car);
-			for(int i=0;i>listarCarrito.size();i++ ) {
-				totalPagar+=listarCarrito.get(i).getPrecio();
-			}
-			model.addAttribute("totalPagar",totalPagar);
-			model.addAttribute("listarCarrito",listarCarrito);
-			model.addAttribute("listarCarrito",listarCarrito.size());
-			//model.addAttribute("producers", producers);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		/*
+		 * try { totalPagar=0; Optional<Product> productOptional =
+		 * productService.findById(id); Product product=productOptional.get();
+		 * item=item+1; car=new Carrito(); car.setItem(item);
+		 * car.setIdProducto(product.getProduct()); car.setNombre(product.getName());
+		 * car.setDescription(product.getDescription());
+		 * car.setPrecio(product.getPrice()); car.setCantidad(cantidad);
+		 * car.setMonto(cantidad*product.getPrice()); listarCarrito.add(car); for(int
+		 * i=0;i>listarCarrito.size();i++ ) {
+		 * totalPagar+=listarCarrito.get(i).getPrecio(); }
+		 * model.addAttribute("totalPagar",totalPagar);
+		 * model.addAttribute("listarCarrito",listarCarrito);
+		 * model.addAttribute("listarCarrito",listarCarrito.size());
+		 * //model.addAttribute("producers", producers); } catch (Exception e) { // TODO
+		 * Auto-generated catch block e.printStackTrace(); }
+		 */
 		model.addAttribute("productSearch", productSearch);
 		return "mayorista/order";
 	}
-	
+
 	@GetMapping("payment") // request
 	public String Type1() {
 		return "mayorista/typePayment";
@@ -92,18 +89,40 @@ public class MayoristaController {
 		return "mayorista/typeshippment";
 	}
 
-	@GetMapping("error") // request
-	public String error() {
-		return "mayorista/error";
+	@GetMapping("{id}/compra") // request
+	public String compra(Model model, @PathVariable("id") Integer id) {
+		ProductSearch productSearch = new ProductSearch();
+		model.addAttribute("productSearch", productSearch);
+		try {
+			Optional<Product> product = productService.findById(id);
+			// List<Review> reviews = reviewService.getAll();
+			model.addAttribute("compra", product.get());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "mayorista/compra";
+	}
+
+	@GetMapping("Detail") // request
+	public String orderDetail(Model model) {
+		try {
+			List<Order> orders = orderService.getAll();
+			model.addAttribute("orders", orders);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "mayorista/view-order";
 	}
 
 	@GetMapping("status") // request
 	public String Status(Model model) {
 		ProductSearch productSearch = new ProductSearch();
+
 		model.addAttribute("productSearch", productSearch);
 		return "mayorista/shipmentStatus";
 	}
-
-	
 
 }
