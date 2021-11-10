@@ -47,7 +47,30 @@ public class Review {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Integer getId() {
+		return id;
+	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Producer getProducers() {
+		return producers;
+	}
+
+	public void setProducers(Producer producers) {
+		this.producers = producers;
+	}
+
+	public Wholesaler getWholesalers() {
+		return wholesalers;
+	}
+
+	public void setWholesalers(Wholesaler wholesalers) {
+		this.wholesalers = wholesalers;
+	}
 
 	public String getDescription() {
 		return description;
@@ -72,4 +95,6 @@ public class Review {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
+	
 }

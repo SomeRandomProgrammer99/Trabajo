@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.trabajo.business.crud.ProducerService;
 import pe.edu.upc.trabajo.business.crud.ProductService;
+import pe.edu.upc.trabajo.business.crud.ReviewService;
 import pe.edu.upc.trabajo.models.entities.Producer;
 import pe.edu.upc.trabajo.models.entities.Product;
+import pe.edu.upc.trabajo.models.entities.Review;
 import pe.edu.upc.trabajo.utils.ProductSearch;
 
 
@@ -36,6 +38,9 @@ public class ProducerController {
 	
 	@Autowired 
 	private ProducerService producerService; //postService;
+
+	@Autowired 
+	private ReviewService reviewService; //postService;
 	
 	
 	@GetMapping("producerView")	// request
@@ -53,6 +58,23 @@ public class ProducerController {
 		model.addAttribute("productSearch", productSearch);
 		return "productores/producerView";
 	}
+	
+	@GetMapping("comentario")	// request
+	public String Comentario(Model model) {
+		//ProductSearch productSearch = new ProductSearch();
+		
+		try {
+			List<Review> reviews = reviewService.getAll();
+			model.addAttribute("reviews",reviews);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//model.addAttribute("productSearch", productSearch);
+		return "productores/view-review";
+	}
+	
 	
 /*	
 	@GetMapping("publication")	// request
