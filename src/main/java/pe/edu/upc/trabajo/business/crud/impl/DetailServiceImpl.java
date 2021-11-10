@@ -16,7 +16,7 @@ public class DetailServiceImpl implements DetailService {
 	private DetailRepository detailRepository;
 	
 	@Override
-	public JpaRepository<Detail, DetailId> getJpaRepository() {
+	public JpaRepository<Detail,DetailId> getJpaRepository() {
 		// TODO Auto-generated method stub
 		return detailRepository;
 	}

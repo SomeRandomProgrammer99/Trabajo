@@ -16,6 +16,7 @@
 <!-- Custom styles for this template -->
 <link href="/css/customized/products-style.css" rel="stylesheet">
 
+
 </head>
 <body>
 
@@ -120,16 +121,18 @@
 												<spam th:text="*{product.price}"></spam>
 												Kg
 											</p>
-											<p class="text-muted text-end" th:text="*{product.producer.name+' '+product.producer.lastName}"/>
+											<a th:href="@{/productores/{id}/viewReview(id=${product.product})}"><p class="text-muted text-end" th:text="*{product.producer.name+' '+product.producer.lastName}"/></a>
 
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="container mt-3 ms-3">
 											<div class="row">
-												<div class="col">
+												<!--
+													<div class="col">
 													<a class="btn btn-info " type="button"> Productor </a>
 												</div>
+												  -->
 												<div class="col">
 													<!--<div class="btn-group"></div>
 													<p>
