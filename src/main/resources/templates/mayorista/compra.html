@@ -69,8 +69,8 @@ body {
 								<div class="input-group mt-3 my-3">
 									<input type="number" placeholder="1" name="cantidadProduct"
 										style="width: 10rem;" min="1" max="999">
-										<input type="submit" class="btn btn-primary ms-2" value="Recalcular"
-										style="width: 7rem;">
+									<!-- <input type="submit" class="btn btn-primary ms-2" value="Recalcular"
+										style="width: 7rem;"> -->
 								</div>
 								<h5 class="card-title">Total</h5>
 								<div class="input-group mt-3">
@@ -91,7 +91,9 @@ body {
 							</div>
 							<div class="d-grid position-absolute bottom-0 end-0 me-3">
 								<a class="btn btn-secondary" style="width: 20.3rem"
-									type="button" th:href="@{/mayorista/{id}/detail(id=${compra.product})}">Confirmar Compra</a>
+									type="button"
+									th:href="@{/mayorista/{id}/detail(id=${compra.product})}">Confirmar
+									Compra</a>
 							</div>
 						</div>
 					</div>
@@ -152,7 +154,7 @@ body {
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn btn-primary">Confirmar</button>
 				</div>
 			</div>
 		</div>
@@ -219,7 +221,7 @@ body {
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn btn-primary">Confirmar</button>
 				</div>
 			</div>
 		</div>

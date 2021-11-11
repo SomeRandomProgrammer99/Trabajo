@@ -1,11 +1,12 @@
 package pe.edu.upc.trabajo.models.entities;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
-//import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -13,14 +14,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Details")
-@IdClass(DetailId.class)
 public class Detail {
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "detail_id", columnDefinition = "NUMERIC(4)")
+	private Integer id;
+		
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="order_id")
 	private Order order;
-	
-	@Id
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="product_id")
 	private Product product;

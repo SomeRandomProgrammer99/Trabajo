@@ -49,7 +49,7 @@ public class Order {
 	private List<Review> reviews;
 	
 	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-	private List<Detail> cards;
+	private List<Detail> details;
 	
 	public Order() {
 		super();
@@ -96,12 +96,21 @@ public class Order {
 		this.typePayment = typePayment;
 	}
 
-	public List<Detail> getCards() {
-		return cards;
+
+	public List<Review> getReviews() {
+		return reviews;
 	}
 
-	public void setCards(List<Detail> cards) {
-		this.cards = cards;
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+
+	public List<Detail> getDetails() {
+		return details;
+	}
+
+	public void setDetails(List<Detail> details) {
+		this.details = details;
 	}
 
 	public Shipment getShipment() {

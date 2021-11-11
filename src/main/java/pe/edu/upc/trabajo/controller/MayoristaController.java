@@ -142,12 +142,12 @@ public class MayoristaController {
 		ProductSearch productSearch = new ProductSearch();
 		model.addAttribute("productSearch", productSearch);
 		try {
-			List<Order> orders = orderService.getAll();
-			model.addAttribute("orders", orders);
-			//<Detail> detail = orderDetailService.findById(id);
-			//Detail detalle=new Detail();
-			//detalle=detail.get();
-			//Optional<Order> orders = orderDetailService.findById();
+			//List<Order> orders = orderService.getAll();
+			//model.addAttribute("orders", orders);
+			Optional<Product> product = productService.findById(id);
+			Product products=product.get();
+			Optional<Detail> detail = orderDetailService.findById(products.getProduct());
+			model.addAttribute("detail", detail.get());
 			//Optional<Product> product = productService.findById(id);
 			// List<Review> reviews = reviewService.getAll();
 			//model.addAttribute("compra", product.get());

@@ -1,5 +1,7 @@
 package pe.edu.upc.trabajo.models.entities;
 
+import java.util.List;
+
 //import java.util.List;
 
 import javax.persistence.Column;
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 //import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -43,6 +46,8 @@ public class Product {
 	@JoinColumn(name = "category_id", nullable = false)
 	private Category category;
 	
+	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+	private List<Detail> details;
 	/*@OneToMany(mappedBy = "product",fetch = FetchType.LAZY)
     private List<Detail> details;*/
 

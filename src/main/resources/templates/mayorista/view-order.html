@@ -34,56 +34,9 @@ body {
 	</header>
 
 	<main>
-		<!-- <section>
-			<div class="card" style="width: 18rem;"
-				th:each="producer: ${producers}">
-				<div class="card-body">
-					<h5 class="card-title" th:text="${producer.name}">Name</h5>
-					<p class="card-text" th:text="${producer.lastName}">Apellido</p>
-					<p class="card-text" th:text="${producer.district.name}">Distrito</p>
-					<p class="card-text" th:text="${producer.district.department.name}">Departamento</p>
-					<a href="#" class="btn btn-warning">Ver productos</a> <a href="#"
-						class="btn btn-warning">Ver reseña</a>
-				</div>
-			</div>
-		</section>
- 		-->
-		<!-- 		<section> -->
-		<!-- 			<div class="row"> -->
-		<!-- 				<div class="col-xs-6 col-sm-4 col-md-4 mb-4" -->
-		<!-- 					th:each="order : ${orders}"> -->
-		<!-- 					<div class="card"> -->
-		<!-- 								      <img th:src="${'/images/employee' + employee.id + '.jpg'}" class="card-img-top" alt="employee"> -->
-		<!-- 						<div class="card-body"> -->
-		<!-- 							<h5 class="card-title" th:text="${order.id}">Special title -->
-		<!-- 								treatment</h5> -->
-		<!-- 							<p class=F"card-text"> -->
-		<!-- 								<strong>Mayorista: </strong><span -->
-		<!-- 									th:text="${order.wholesaler.name}"></span><br> <strong>Monto: -->
-		<!-- 								</strong><span th:text="${order.amount}"></span><br> <strong>Fecha: -->
-		<!-- 								</strong><span th:text="${order.date}"></span><br> <strong>Monto: -->
-		<!-- 								</strong><span th:text="${order.amount}"></span><br> <strong>Tipo de Pago: </strong><span th:text="${order.typePayment.name}"></span><br> -->
-		<!-- 								<strong>Tipo de Envío: </strong><span th:text="${order.shipment.typeShipment.name}"></span><br> -->
-		<!-- 								<strong>Dirección de llegada: </strong><span th:text="${order.shipment.address}"></span><br> <strong>Distrito: -->
-		<!-- 								</strong><span th:text="${order.wholesaler.district.name}"></span><br> -->
-		<!-- 								<strong>Departamento: </strong><span th:text="${order.wholesaler.district.department.name}"></span><br> -->
-		<!-- 																	 <span -->
-		<!-- 																	th:text="${}"></span><br> -->
-		<!-- 																	 <span -->
-		<!-- 																	th:text="${producer.district.department.name}"></span><br> -->
-		<!-- 										        	<span th:text="${employee.manager.lastName}"></span> -->
-		<!-- 							</p> -->
-		<!-- 														<a th:href="${'/producer/view/' + producer.id}" -->
-		<!-- 															class="btn btn-warning">Ver reseñas</a> <a -->
-		<!-- 															th:href="${'/producer/view/' + producer.id}" -->
-		<!-- 															class="btn btn-warning">Ver productos</a> -->
-		<!-- 						</div> -->
-		<!-- 					</div> -->
-		<!-- 				</div> -->
-		<!-- 			</div> -->
-		<!-- 		</section> -->
+		
 
-		<div class="container" th:each="order : ${orders}">
+		<div class="container" th:object="${detail}">
 			<div class="bg-green"></div>
 			<div class="row">
 				<div class="col-12 border-bottom px-4 py-3">
@@ -96,10 +49,11 @@ body {
 						<div class="col-md-10 ">
 							<div class="d-flex justify-content-between">
 								<p class="textmuted">Cliente:</p>
-								<p class="bg" th:text="${order.date}"></p>
+								<p class="bg" th:text="${detail.order.date}"></p>
 							</div>
-							<p class="h-blue" th:text="${order.wholesaler.name}"></p>
-							<strong>S/. </strong><span th:text="${order.amount}"></span><br>
+							<p class="h-blue" th:text="${detail.order.wholesaler.name}"></p>
+							<p class="card-text" th:text="${detail.product.name}"></p>
+							<strong>S/. </strong><span th:text="${detail.order.amount}"></span><br>
 							<div
 								class="box d-flex justify-content-between align-items-center mt-3">
 								<p class="">
@@ -127,7 +81,7 @@ body {
 										<div>
 											<strong>Tipo de envío: </strong>
 											<p class="p-blue"
-												th:text="${order.shipment.typeShipment.name}"></p>
+												th:text="${detail.order.shipment.typeShipment.name}"></p>
 											<!-- 											<p class="textmuted">~15 mins</p> -->
 										</div>
 										<div class="arrow">
@@ -143,7 +97,7 @@ body {
 									<div class="d-flex justify-content-between align-items-center">
 										<div>
 											<strong>Tipo de pago: </strong>
-											<h3 class="p-blue" th:text="${order.typePayment.name}"></h3>
+											<h3 class="p-blue" th:text="${detail.order.typePayment.name}"></h3>
 											<!-- 											<p class="textmuted">~15 mins</p> -->
 										</div>
 										<div class="arrow">
@@ -159,7 +113,7 @@ body {
 									<div class="d-flex justify-content-between align-items-center">
 										<div>
 											<strong>Dirección: </strong>
-											<h3 class="p-blue" th:text="${order.shipment.address}"></h3>
+											<h3 class="p-blue" th:text="${detail.order.shipment.address}"></h3>
 											<!-- 											<p class="textmuted">~15 mins</p> -->
 										</div>
 										<div class="arrow">
