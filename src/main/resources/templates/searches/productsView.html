@@ -75,19 +75,12 @@
 							<div id="collapseThree" class="accordion-collapse collapse"
 								aria-labelledby="headingThree"
 								data-bs-parent="#accordionExample">
-								<div class="accordion-body">
-									<p>
-										<a class="dropdown-item" href="#">Tuberculos</a>
-									</p>
-									<p>
-										<a class="dropdown-item" href="#">Vegetales</a>
-									</p>
-									<p>
-										<a class="dropdown-item" href="#">Frutas</a>
-									</p>
-									<p>
-										<a class="dropdown-item" href="#">Carnes</a>
-									</p>
+								<div class="accordion-body" th:each="category : ${category}">
+									<!-- -->
+									<a class="dropdown-item"
+									th:href="@{/searches/{name}/searchCategory(name=${category.name})}"
+									 ><span th:text="${category.name}"></span></a>	
+									
 								</div>
 							</div>
 						</div>
@@ -107,9 +100,11 @@
 							<div class="card mb-3" style="max-width: 90%;">
 								<div class="row g-0">
 									<div class="col-md-4">
-										<img th:src="${'/img/productos/producto' + product.product + '.jpg'}" class="img-fluid rounded-start"
-											alt="..." style="height: 100%;">
-											
+										<img
+											th:src="${'/img/productos/producto' + product.product + '.jpg'}"
+											class="img-fluid rounded-start" alt="..."
+											style="height: 100%;">
+
 									</div>
 									<div class="col-md-6">
 										<div class="card-body">
@@ -121,7 +116,10 @@
 												<spam th:text="*{product.price}"></spam>
 												Kg
 											</p>
-											<a th:href="@{/productores/{id}/viewReview(id=${product.product})}"><p class="text-muted text-end" th:text="*{product.producer.name+' '+product.producer.lastName}"/></a>
+											<a
+												th:href="@{/productores/{id}/viewReview(id=${product.product})}"><p
+													class="text-muted text-end"
+													th:text="*{product.producer.name+' '+product.producer.lastName}" /></a>
 
 										</div>
 									</div>
@@ -138,8 +136,9 @@
 													<p>
 														Añadir <input type="checkbox">
 													</p>-->
-													<a class="btn btn-danger"  type="button"
-													th:href="@{/mayorista/{id}/compra(id=${product.product})}">Comprar </a>
+													<a class="btn btn-danger" type="button"
+														th:href="@{/mayorista/{id}/compra(id=${product.product})}">Comprar
+													</a>
 													<!-- th:href=@{/mayorista/{id}(id=${product.id})} /mayorista/order?(id=product.id)-->
 												</div>
 

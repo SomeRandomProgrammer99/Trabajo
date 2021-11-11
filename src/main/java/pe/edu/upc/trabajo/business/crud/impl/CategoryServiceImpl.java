@@ -1,6 +1,7 @@
 package pe.edu.upc.trabajo.business.crud.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,9 +24,10 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public List<Category> findByName(String name) throws Exception {
+	public Optional<Category> findByName(String name) throws Exception {
 		// TODO Auto-generated method stub
 		return categoryRepository.findByName(name);
 	}
+
 
 }

@@ -18,9 +18,11 @@ import pe.edu.upc.trabajo.business.crud.DetailService;
 import pe.edu.upc.trabajo.business.crud.OrderService;
 import pe.edu.upc.trabajo.business.crud.ProducerService;
 import pe.edu.upc.trabajo.business.crud.ProductService;
+import pe.edu.upc.trabajo.business.crud.ShipmentStatusService;
 import pe.edu.upc.trabajo.models.entities.Producer;
 import pe.edu.upc.trabajo.models.entities.Product;
 import pe.edu.upc.trabajo.models.entities.Review;
+import pe.edu.upc.trabajo.models.entities.ShipmentStatus;
 import pe.edu.upc.trabajo.models.entities.Detail;
 import pe.edu.upc.trabajo.models.entities.Order;
 import pe.edu.upc.trabajo.utils.Carrito;
@@ -42,6 +44,10 @@ public class MayoristaController {
 
 	@Autowired
 	private DetailService orderDetailService;
+	
+	@Autowired 
+	private ShipmentStatusService shipmentStatusService;
+	
 
 	/*
 	 * 
@@ -87,16 +93,6 @@ public class MayoristaController {
 		return "mayorista/order";
 	}
 
-	@GetMapping("payment") // request
-	public String Type1() {
-		return "mayorista/typePayment";
-	}
-
-	@GetMapping("shippment") // request
-	public String Type2() {
-		return "mayorista/typeshippment";
-	}
-
 	@GetMapping("{id}/compra") // request
 	public String compra(Model model, @PathVariable("id") Integer id) {
 		ProductSearch productSearch = new ProductSearch();
@@ -112,6 +108,20 @@ public class MayoristaController {
 		return "mayorista/compra";
 	}
 	
+	
+	@GetMapping("shipment")
+	public String shipmentList(Model model) {
+		ProductSearch productSearch = new ProductSearch();
+		model.addAttribute("productSearch", productSearch);
+		try {
+			List<ShipmentStatus> shipmentStatuses= shipmentStatusService.getAll();
+			model.addAttribute("shipmentStatuses", shipmentStatuses);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "mayorista/view-shipment";
+	}
 
 	
 /*
