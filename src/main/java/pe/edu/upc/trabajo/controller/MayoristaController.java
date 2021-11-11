@@ -183,6 +183,25 @@ public class MayoristaController {
 		return "mayorista/view-order";
 	}*/
 
+	@GetMapping("{id}/productInform")	// request
+	public String Informe(Model model, @PathVariable("id") Integer id) {
+		ProductSearch productSearch = new ProductSearch();
+		
+		try {
+			Optional<Product> products = productService.findById(id);
+			//List<Review> reviews = reviewService.getAll();
+			model.addAttribute("product",products.get());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("productSearch", productSearch);
+		return "mayorista/productInform";
+	}
+	
+	
+	
 	@GetMapping("status") // request
 	public String Status(Model model) {
 		ProductSearch productSearch = new ProductSearch();

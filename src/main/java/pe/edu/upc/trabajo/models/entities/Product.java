@@ -42,6 +42,9 @@ public class Product {
 	@Column(name = "price", columnDefinition = "DECIMAL(8,2)")
 	private Float price;
 	
+	@Column (name= "status", length= 25)
+	private String status;
+	
 	@ManyToOne
 	@JoinColumn(name = "category_id", nullable = false)
 	private Category category;
@@ -63,8 +66,6 @@ public class Product {
 	public void setProducer(Producer producer) {
 		this.producer = producer;
 	}
-
-
 
 	public Integer getProduct() {
 		return id;
@@ -106,6 +107,31 @@ public class Product {
 		this.category = category;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public List<Detail> getDetails() {
+		return details;
+	}
+
+	public void setDetails(List<Detail> details) {
+		this.details = details;
+	}
+
+	
 	/*public List<Detail> getCarts() {
 		return details;
 	}

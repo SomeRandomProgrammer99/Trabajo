@@ -129,7 +129,8 @@ body {
 										<h5 class="card-title">Envio mediante encomienda</h5>
 										<p class="card-text">Con la encomienda tu pedido llegara a
 											cualquier ciudad del Perú.</p>
-										<a href="#" class="btn btn-primary">Selccionar</a>
+										<button class="btn btn-primary" data-bs-toggle="modal"
+											data-bs-target="#modalConfirm" type="button">Seleccionar</button>
 									</div>
 								</div>
 							</div>
@@ -141,7 +142,8 @@ body {
 										<h5 class="card-title">Envio privado</h5>
 										<p class="card-text">Realiza tu envio de la manera que
 											desees por tu cuenta seleccionando este tipo de envio.</p>
-										<a href="#" class="btn btn-primary">Seleccionar</a>
+										<button class="btn btn-primary" data-bs-toggle="modal"
+											data-bs-target="#modalConfirm" type="button">Seleccionar</button>
 									</div>
 								</div>
 							</div>
@@ -154,7 +156,8 @@ body {
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Confirmar</button>
+
+					<!-- <button type="button" class="btn btn-primary">Confirmar</button> -->
 				</div>
 			</div>
 		</div>
@@ -184,7 +187,8 @@ body {
 										<h5 class="card-title">Paga con tarjeta de crédito</h5>
 										<p class="card-text">Este método de pago es aceptado con
 											visa y mastercard.</p>
-										<a href="#" class="btn btn-primary">Selccionar</a>
+										<button class="btn btn-primary" data-bs-toggle="modal"
+											data-bs-target="#modalConfirm" type="button">Seleccionar</button>
 									</div>
 								</div>
 							</div>
@@ -196,7 +200,8 @@ body {
 										<h5 class="card-title">Paga con Yape</h5>
 										<p class="card-text">Con Yape podras pagar al instante
 											desde tu dispositivo móvil.</p>
-										<a href="#" class="btn btn-primary">Seleccionar</a>
+										<button class="btn btn-primary" data-bs-toggle="modal"
+											data-bs-target="#modalConfirm" type="button">Seleccionar</button>
 									</div>
 								</div>
 							</div>
@@ -208,7 +213,8 @@ body {
 										<h5 class="card-title">Paga en efectivo</h5>
 										<p class="card-text">Puedes pagar si lo deseas en efectivo
 											seleccionando este método.</p>
-										<a href="#" class="btn btn-primary">Seleccionar</a>
+										<button class="btn btn-primary" data-bs-toggle="modal"
+											data-bs-target="#modalConfirm" type="button">Seleccionar</button>
 									</div>
 								</div>
 							</div>
@@ -221,8 +227,47 @@ body {
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Confirmar</button>
+					<!-- <button type="button" class="btn btn-primary">Confirmar</button> -->
+
 				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Modal Confirm-->
+	<div class="modal" id="modalConfirm" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Confirmación</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>¿Guardar método?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+					<button type="button" class="btn btn-primary"
+						data-bs-toggle="modal" data-bs-target="#modalExito">Guardar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Exito-->
+	<div class="modal" id="modalExito" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Exito</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="alert alert-success" role="alert">Método guardado
+					con éxito</div>
 			</div>
 		</div>
 	</div>

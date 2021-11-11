@@ -78,9 +78,9 @@
 								<div class="accordion-body" th:each="category : ${category}">
 									<!-- -->
 									<a class="dropdown-item"
-									th:href="@{/searches/{name}/searchCategory(name=${category.name})}"
-									 ><span th:text="${category.name}"></span></a>	
-									
+										th:href="@{/searches/{name}/searchCategory(name=${category.name})}"><span
+										th:text="${category.name}"></span></a>
+
 								</div>
 							</div>
 						</div>
@@ -97,7 +97,7 @@
 
 
 						<div th:each="product : ${products}" class="list-group-item">
-							<div class="card mb-3" style="max-width: 90%;">
+							<div class="card mb-3" style="max-width: 95%;">
 								<div class="row g-0">
 									<div class="col-md-4">
 										<img
@@ -136,9 +136,12 @@
 													<p>
 														Añadir <input type="checkbox">
 													</p>-->
-													<a class="btn btn-danger" type="button"
+													<a class="btn btn-danger" type="button" style="width:6.7rem"
 														th:href="@{/mayorista/{id}/compra(id=${product.product})}">Comprar
-													</a>
+													</a> 
+													<a class="btn btn-info mt-2" type="button" 
+														th:href=@{/mayorista/{id}/productInform(id=${product.product})}>Ver
+														informe </a>
 													<!-- th:href=@{/mayorista/{id}(id=${product.id})} /mayorista/order?(id=product.id)-->
 												</div>
 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta charset="ISO-8859-1">
+<title>Certificado de calidad</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+<style type="text/css">
+body {
+	padding-top: 4rem;
+}
+</style>
+</head>
+<body>
+	<header th:replace="/layout :: frag-header">
+		
+	</header>
+	<main>
+		<h3 class="text-center mt-3">Informe de calidad</h3>
+
+		<div class="container mt-3">
+			<div th:object="${product}" class="list-group-item">
+				<div class="card mb-3" style="max-width: 100%;">
+					<div class="row g-0">
+						<div class="col-md-4">
+							<img
+								th:src="${'/img/productos/producto' + product.product + '.jpg'}"
+								class="img-fluid rounded-start" alt="..." style="height: 100%;">
+
+						</div>
+						<div class="col-md-6">
+							<div class="card-body">
+								<!--<h5 class="card-text" th:text="*{post.id}"></h5>-->
+								<h5 class="card-text" th:text="${product.name}"></h5>
+								<p class="card-text" th:text="${product.description}"></p>
+								<p class="card-text">
+									Informe de calidad:
+									<spam th:text="${product.status}"></spam>
+								</p>
+
+								<p class="card-text">
+									S/.
+									<spam th:text="${product.price}"></spam>
+									Kg
+								</p>
+								<p class="text-muted text-end"
+									th:text="${product.producer.name+' '+product.producer.lastName}" />
+
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="container mt-3 ms-3">
+								<div class="row">
+									<div class="col">
+										<a class="btn btn-info " type="button"> Productor </a>
+									</div>
+									<div class="col">
+										<!--<div class="btn-group"></div>
+													<p>
+														Añadir <input type="checkbox">
+													</p>-->
+										<a class="btn btn-danger" type="button" th:href=@{/}>No
+											Realizar </a> <a class="btn btn-success" type="button"
+											th:href=@{/}>Realizar </a>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</main>
+	<!-- <footer th:replace="/layout :: frag-footer"> </footer> -->
+
+	<script src="/js/bootstrap.bundle.min.js"></script>
+	<script src="/js/sidebars.js"></script>
+</body>
+</html>
